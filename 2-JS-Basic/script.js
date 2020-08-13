@@ -289,6 +289,7 @@ The Ternary operator and switch statement
 */
 
 var john_bill = {
+    name: 'John',
     bills: [124, 48, 268, 180, 42],
     calculateTip:function(){
         this.tips = [];
@@ -312,6 +313,32 @@ var john_bill = {
 john_bill.calculateTip();
 console.log(john_bill);
 
+var mark_bill = {
+    name: 'Mark',
+    bills: [77, 375, 110, 45],
+    calculateTip:function(){
+        this.tips = [];
+        this.final_paid = [];
+        for (var i = 0; i < this.bills.length; i++){
+            var percentage;
+            var bill = this.bills[i];
+
+            if (bill < 100){
+                percentage = .2;
+            }else if (bill >= 100 && bill <= 300){
+                percentage = .1;
+            }else if (bill>300){
+                percentage = .25;
+            }
+            this.tips[i] = percentage * bill;
+            this.final_paid[i]=bill + bill*percentage;
+        }
+    },
+};
+
+mark_bill.calculateTip();
+console.log(mark_bill);
+
 var calculateAverageTip = function(Tips){
     var sum = 0;
     for (var i = 0; i < Tips.length; i++){
@@ -322,4 +349,27 @@ var calculateAverageTip = function(Tips){
 }
 
 john_bill.tipAverage = calculateAverageTip(john_bill.tips);
-console.log(john_bill.tipAverage);
+console.log("John's bill average: " + john_bill.tipAverage);
+
+mark_bill.tipAverage = calculateAverageTip(mark_bill.tips);
+console.log("Mark's bill average: " + mark_bill.tipAverage);
+
+var isFamilyHighestPaid = function(JohnTipsAve, MarkTipsAve){
+    if (JohnTipsAve > MarkTipsAve)
+        return 1;
+    else if (MarkTipsAve > JohnTipsAve)
+        return -1;
+    return 0;
+}
+
+if (isFamilyHighestPaid(john_bill.tipAverage, mark_bill.tipAverage) == 1) {
+    console.log("John's family paid highest");
+    console.log(john_bill);
+}
+else if (isFamilyHighestPaid(john_bill.tipAverage, mark_bill.tipAverage) == -1) {
+    console.log("Mark's family paid highest");
+    console.log(mark_bill);
+}
+else if (isFamilyHighestPaid(john_bill.tipAverage, mark_bill.tipAverage) == 0){
+    console.log("They same");
+}
