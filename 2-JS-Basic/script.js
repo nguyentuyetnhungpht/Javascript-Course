@@ -371,5 +371,5 @@ else if (isFamilyHighestPaid(john_bill.tipAverage, mark_bill.tipAverage) == -1) 
     console.log(mark_bill);
 }
 else if (isFamilyHighestPaid(john_bill.tipAverage, mark_bill.tipAverage) == 0){
-    console.log("They same");
+    console.log("They same bill paid");
 }
