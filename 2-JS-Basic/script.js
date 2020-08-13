@@ -78,7 +78,7 @@ The Ternary operator and switch statement
 // FALSY values: undefined, null, 0, '', NaN
 // TRUTHY values: not FALSY values
 
-var height = 23;
+//var height = 23;
 
 // if (height){
 //     console.log('Variable is defined');
@@ -202,3 +202,124 @@ var height = 23;
 // jane.birthYear = 1111;
 // jane['lastName'] = 'Smith';
 // console.log(jane);
+
+/*************************/
+/*
+    Object and method
+*/
+
+// var Rem = {
+//     firstName: 'Nhung',
+//     lastName: 'Nguyen',
+//     birthYear: 1998,
+//     family: ['Dad', 'Mom', 'Young Sister'],
+//     job: 'Engineer',
+//     calculateAge: function(){
+//         //return 2020-this.birthYear;
+//         this.age =  2020-this.birthYear; //init property age
+//     }
+// }
+// //Init property age
+// //Rem.age = Rem.calculateAge();
+
+// console.log(Rem);
+
+/*************************/
+/*
+   CODING CHALLENGE 4
+*/
+
+// var Mark = {
+//     name: 'Mark',
+//     mass: 70,
+//     height: 1.78,
+//     calculateBMI: function(){
+//         return this.mass/(this.height * this.height);
+//     }
+// }
+
+// var John = {
+//     name: 'John',
+//     mass: 65,
+//     height: 1.88,
+//     calculateBMI: function(){
+//         return this.mass/(this.height * this.height);
+//     }
+// }
+
+// John.BMI = John.calculateBMI();
+// console.log(John.BMI);
+// Mark.BMI = Mark.calculateBMI();
+// console.log(Mark.BMI);
+
+// if (Mark['BMI'] > John['BMI']) {
+//     console.log("Mark's BMI higher than John's BMI");
+//     console.log(Mark);
+// }else if (Mark['BMI'] < John['BMI']) {
+//     console.log("John's BMI higher than Mark's BMI");
+//     console.log(John);
+// }else{
+//     console.log('They same');
+// }
+
+/*************************/
+/*
+   LOOP & CONTINUE & BREAK
+*/
+
+// var arr = ['Nhung', 1998, 'Rem', 'Nguyen', 'Hang', false];
+
+// for (var i = 0; i < arr.length; i++){
+//     if (typeof arr[i] !== 'string') 
+//         continue;
+//     console.log(arr[i]);
+//     //console.log(2);
+// }
+
+// for (var i = 0; i < arr.length; i++){
+//     if (typeof arr[i] !== 'string') 
+//         break;
+//     console.log(arr[i]);
+//     console.log(2);
+// }
+
+/*************************/
+/*
+   CODING CHALLENGE 5
+*/
+
+var john_bill = {
+    bills: [124, 48, 268, 180, 42],
+    calculateTip:function(){
+        this.tips = [];
+        this.final_paid = [];
+        for (var i = 0; i < this.bills.length; i++){
+            var percentage;
+            var bill = this.bills[i];
+
+            if (bill < 50){
+                percentage = .2;
+            }else if (bill >= 50 && bill <= 200){
+                percentage = .15;
+            }else if (bill>200){
+                percentage = .1;
+            }
+            this.tips[i] = percentage * bill;
+            this.final_paid[i]=bill + bill*percentage;
+        }
+    },
+};
+john_bill.calculateTip();
+console.log(john_bill);
+
+var calculateAverageTip = function(Tips){
+    var sum = 0;
+    for (var i = 0; i < Tips.length; i++){
+        sum += Tips[i];
+    }
+
+    return sum/Tips.length;
+}
+
+john_bill.tipAverage = calculateAverageTip(john_bill.tips);
+console.log(john_bill.tipAverage);
