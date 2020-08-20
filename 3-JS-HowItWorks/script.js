@@ -16,14 +16,41 @@
 
 //Variable
 
-console.log(age); //undefine
-var age = 22;
+// console.log(age); //undefine
+// var age = 22;
 
-function foo() {
-    console.log(age); //undefine
-    var age = 65;
-    console.log("age in function(executive context): " + age);
+// function foo() {
+//     console.log(age); //undefine
+//     var age = 65;
+//     console.log("age in function(executive context): " + age);
+// }
+
+// foo();
+// console.log("age executive in global context: " + age);
+
+/* ===== Lecture: This keyword ====== */
+
+//console.log(this);
+
+var john = {
+    name: 'John',
+    yearBirth: 1990,
+    calculateAge: function(){
+        console.log(this);//method of object
+        console.log(2020 - this.yearBirth);
+        function innerFunction(){
+            console.log(this);//regular function not method => window object
+        }
+        innerFunction();
+    }
 }
 
-foo();
-console.log("age executive in global context: " + age);
+john.calculateAge();
+
+var rem = {
+    name: 'Rem',
+    yearBirth: 1998,
+}
+
+rem.calculateAge = john.calculateAge; // method borrowing
+rem.calculateAge();
