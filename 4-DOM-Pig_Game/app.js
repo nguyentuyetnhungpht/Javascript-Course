@@ -11,7 +11,7 @@ GAME RULES:
 
 var score, roundScore, activePlayer, isGameRunning;
 init();
-var lastDice
+var lastDice;
 
 document.querySelector('.btn-roll').addEventListener('click', function(){
     if (isGameRunning){
@@ -23,7 +23,12 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         diceDOM.src = 'dice-' + dice + '.png';
         
         //3.Update roundScore IF roll not a 1
-        if (dice != 1){
+        if (dice == 6 && lastDice == 6){
+            score[activePlayer] = 0;
+            document.querySelector('#score-' + activePlayer).textContent = '0';
+            nextPlayer();
+        }
+        else if (dice != 1){
             //update score
             roundScore += dice;
             document.getElementById('current-'+activePlayer).textContent = roundScore;
@@ -33,7 +38,7 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
             nextPlayer();
         }
 
-        
+        lastDice = dice;
     }
 })
 
