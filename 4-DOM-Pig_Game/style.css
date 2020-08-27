@@ -19,9 +19,9 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 520px;
+    top: 550px;
     color: #555;
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     text-transform: uppercase;
     font-family: Lato;
@@ -29,6 +29,24 @@
 }
 
 .final-score:focus{outline: none;}
+
+#dice-1{top: 120px;}
+#dice-2{top: 250px;}
+
+.winning-score{
+    top: 530px;
+    position: absolute;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #555;
+    background: none;
+    border: none;
+    font-family: Lato;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
 
 body {
     background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4)), url(back.jpg);
